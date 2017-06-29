@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "botbuilder": "^3.8.4",
+    "dotenv-extended": "^2.0.1",
+    "needle": "^1.6.0",
+    "node-uuid": "^1.4.8",
+    "request": "^2.81.0",
+    "response": "^0.18.0",
+    "restify": "^4.3.0"
+  }
+}

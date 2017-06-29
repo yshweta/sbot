@@ -2245,13 +2245,10 @@ if (process.env.IS_SPELL_CORRECTION_ENABLED === 'true') {
         }
     });
 }
-//require('dotenv-extended').load();
 
-//var builder = require('botbuilder'),
     fs = require('fs'),
     needle = require('needle'),
-   // restify = require('restify'),
-   // request = require('request'),
+   
     url = require('url'),
     speechService = require('./speech_service.js');
 

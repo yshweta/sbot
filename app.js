@@ -4,7 +4,8 @@ var request = require('request');
 var anything= require('dotenv-extended');
 var y='yes';
 var n='no';
-var options=[y,n];
+var e='exit';
+var options=[y,n,e];
 var clp,pswd,gp,ad,net,mail,pci,hrm,dm,nprint,sp,ii;
 //var response= require('response');
 //var spellService = require('./spell-service');
@@ -180,7 +181,7 @@ var sc = results.response.entity;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
         //newh=avg;
         //session.send(newh);
@@ -190,7 +191,11 @@ var sc = results.response.entity;
        session.send(msg);
    session.endDialog();   
 }
- }
+    else
+    {session.send("I hope we were able to assist you.");
+     session.endDialog();
+    }
+}
   ]);
  function createHeroCardwnp(session,sc,s1) {    
     return new builder.HeroCard(session)

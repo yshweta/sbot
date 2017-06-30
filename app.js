@@ -17,8 +17,8 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 });
 // Create connector and listen for messages
 var connector = new builder.ChatConnector({
- //   appId:process.env.MICROSOFT_APP_ID,
-   // appPassword: process.env.MICROSOFT_APP_PASSWORD
+   //appId:process.env.MICROSOFT_APP_ID,
+    //appPassword: process.env.MICROSOFT_APP_PASSWORD
 appId:'55b3a953-ecb7-4384-85f9-9e8ef2bb5ff8',
  appPassword:'fAHmxp8NkzFbsQi6Fk8Phrj'
 });
@@ -124,15 +124,17 @@ var sc = results.response.entity;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
-    {
-        //newh=avg;
-        //session.send(newh);
-        var card = createHeroCardlotus(session,sc,session.message.text);
+    else if(sc==='yes')
+{
+    var card = createHeroCardlotus(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
-   session.endDialog();   
+   session.endDialog();
+    }
+    else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -191,11 +193,11 @@ var sc = results.response.entity;
        session.send(msg);
    session.endDialog();   
 }
-    else
-    {session.send("I hope we were able to assist you.");
-     session.endDialog();
-    }
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
+ }
   ]);
  function createHeroCardwnp(session,sc,s1) {    
     return new builder.HeroCard(session)
@@ -234,13 +236,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardads(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -281,13 +287,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardgped(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -328,13 +338,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardm(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -375,13 +389,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardnet(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -422,13 +440,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardpgped(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -469,13 +491,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardpci(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -516,13 +542,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardhrms(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -563,13 +593,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCarddot(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -587,7 +621,7 @@ session.message.text=avg;
 }
 
 bot.dialog('solveSapBarCodeValueNotPrinting', 
-function (session,arg){
+function (session,args,next){
     //session.sendTyping();
     var sp=session.message.text;
     session.send("ENSURE BARCODE PRINT COME WITH ANOTHER PAGE.\n"+"\n"+"\nGO TO SAP GUI OPTION CLICK SECUIRTY OPTION.\n"+"\n"+"\nGO TO CUSTOMIZED DETAILS AND CHECK WHETHER ALL SECURITY ITEMS ARE ALLOW.\n"+"\n"+"\nGO TO ALL LAST PAGE AND CHANGE ALL THE DENY OPTION IS ALLOW .\n"+"\n"+"\nAPPLY OK . THEN RESTART SAP GUI APPLICATION.\n"+"\n"+"\n");
@@ -610,13 +644,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardsap(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -655,12 +693,16 @@ session.message.text=avg;
     var sc = results.response.entity;
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {var card = createHeroCardnetworkp(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
     session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -701,13 +743,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardinter(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -748,13 +794,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardperfex(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -793,12 +843,16 @@ session.message.text=avg;
 {    var sc = results.response.entity;
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {var card = createHeroCardsign(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
     session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -839,13 +893,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardhist(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -886,13 +944,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardcsd(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -933,7 +995,7 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardsolve(session,sc,session.message.text);
         // attach the card to the reply message
@@ -941,18 +1003,22 @@ session.message.text=avg;
        session.send(msg);
    session.endDialog();   
 }
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
+}
  }
   ]);
  function createHeroCardsolve(session,sc,s1) {
        return new builder.HeroCard(session)
-        .title('Service Desk')
+        .title('Network')
         .subtitle('Additional help')
         .text('In the mean time, while your engineer arrives feel free to access the google page')
         .images([
             builder.CardImage.create(session, 'https://blog.sqlauthority.com/i/a/errorstop.png')
         ])
         .buttons([
-            builder.CardAction.openUrl(session,'https://www.google.co.in/#q='+session.userData.number+'&spf=1498190457709', 'Portal link'),    
+            builder.CardAction.openUrl(session,'https://www.google.co.in/#q='+session.userData.number+'&spf=1498190457709', 'Error Network'),    
         ]);
 }
 
@@ -980,13 +1046,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardblueer(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1027,13 +1097,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardlaptop(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1074,13 +1148,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCarddrive(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1121,13 +1199,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardinter(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1168,13 +1250,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardexp(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1215,13 +1301,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+   else if(sc==='yes')
     {
          var card = createHeroCardshare(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1262,13 +1352,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardslow(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1309,13 +1403,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardexcel(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1356,13 +1454,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardcame(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1404,13 +1506,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardserver(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1451,13 +1557,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardraid(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1498,13 +1608,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCarddiskspace(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1545,13 +1659,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardoffline(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1592,13 +1710,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardsysl(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1639,13 +1761,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardus(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1686,13 +1812,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardsapid(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1733,13 +1863,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardfcw(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1780,13 +1914,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardfcb(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1809,14 +1947,14 @@ function (session,args,next){
       var pfs=session.message.text;
     session.send("1.	Check whether the printer selected while printing from system is correct or not.\n"+"\n"+"\n 2.	Check whether the printer is powered on or not. If not powered on. Please power on the same. \n"+"\n"+"\n3.	Check whether USB Cable or the LAN Cable is connected properly or not.\n"+"\n"+"\n4.	Make sure the printer is showing Ready status in the Devices and printers in the control panel of the system settings option. \n"+"\n"+"\n5.	Raise the ticket in service desk for engineer addressing and resolving the problem.\n"+"\n"+"\n ");
 session.beginDialog('/pfscard',pfs);
-session.userData.number=fcb;
+session.userData.number=pfs;
 },
-function(session,results,fcb)
+function(session,results,pfs)
 {}).triggerAction({
     matches: 'unableToPrintFromSystem'
 });
 bot.dialog('/pfscard',
-[   function(session,fcb)
+[   function(session,pfs)
 { avg=pfs;
     //session.send(avg);  
    builder.Prompts.choice(session,'Do you want to search the web?',options);   
@@ -1827,13 +1965,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardpfs(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1874,13 +2016,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCarddom(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1921,13 +2067,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardknw(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -1968,13 +2118,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardsss(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -2014,13 +2168,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardlnea(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -2061,13 +2219,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCarddris(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -2108,7 +2270,7 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardsnpo(session,sc,session.message.text);
         // attach the card to the reply message
@@ -2155,13 +2317,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardsgdb(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -2202,13 +2368,17 @@ session.message.text=avg;
    //session.send(avg);
     if(sc==='no')
     {session.beginDialog('None');}
-    else
+    else if(sc==='yes')
     {
          var card = createHeroCardsdsr(session,sc,session.message.text);
         // attach the card to the reply message
        var msg = new builder.Message(session).addAttachment(card);
        session.send(msg);
    session.endDialog();   
+}
+else{
+    session.send("I hope we were able to assist you.");
+    session.endDialog();
 }
  }
   ]);
@@ -2250,10 +2420,13 @@ if (process.env.IS_SPELL_CORRECTION_ENABLED === 'true') {
         }
     });
 }
+//require('dotenv-extended').load();
 
+//var builder = require('botbuilder'),
     fs = require('fs'),
     needle = require('needle'),
-   
+   // restify = require('restify'),
+   // request = require('request'),
     url = require('url'),
     speechService = require('./speech_service.js');
 

@@ -23,7 +23,8 @@ appId:'55b3a953-ecb7-4384-85f9-9e8ef2bb5ff8',
  appPassword:'fAHmxp8NkzFbsQi6Fk8Phrj'
 });
 server.post('/api/messages', connector.listen());
-var bot = new builder.UniversalBot(connector,function(session){
+var bot = new builder.UniversalBot(connector,
+function(session){
     
 //Speech(voice recognition)
 if (hasAudioAttachment(session)) {
@@ -38,7 +39,8 @@ if (hasAudioAttachment(session)) {
     }//if
     else {
         //session.send('Did you upload an audio file? I\'m more of an audible person. Try sending me a wav file');
-    }});
+    }}
+);
 
 //url after publishing
 var model = 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/e0a26263-411c-450d-8172-d805099a8668?subscription-key=eb7529ef4b8f4b85a8397daef4dc1e90&timezoneOffset=0&verbose=true&q=';
@@ -87,13 +89,63 @@ session.endDialog('Message has been sent to fms department, an engineer will be 
 }]);
 
 //Hello intent 
-bot.dialog('greetmsg', function (session,arg){
+bot.dialog('greetmsg', 
+function (session,args,next){
     //session.sendTyping();
     session.send("Hi! I'm S-bot.\n"+"\n"+"\nTell me what is the problem you are facing so that I can help you provide a solution.\n"+"\n"+"\n I can convert speech to text as well. \n"+"\n"+"\nPlease check your keywords before submitting");
-session.endDialog();
+session.beginDialog('/choice')
 }).triggerAction({
     matches: 'greetmsg'
 });
+  bot.dialog('/choice',
+[   function (session) {
+      session.send("You can try the following queries")
+    var cards = getCardsAttachments();
+    // create reply with Carousel AttachmentLayout
+    var reply = new builder.Message(session)
+        .attachmentLayout(builder.AttachmentLayout.carousel)
+        .attachments(cards);
+    session.send(reply);
+}]);
+function getCardsAttachments(session) {
+    return [
+        new builder.HeroCard(session)
+            .title('Printer Defects')
+            .subtitle('Printer has stopped functioning appropriately?')
+            .text('You could always toss a misbehaving inkjet or laser out the window, but where would that leave you? ')
+            .images([
+                builder.CardImage.create(session, 'http://www.tonerhaus.com/blog/wp-content/uploads/2014/10/Typical-Problems-Office-Printers-12164023_s.jpg')
+            ]),
+        new builder.HeroCard(session)
+            .title('Internet Issue')
+            .subtitle('Net too slow?')
+            .text('If you are experiencing problems with a variety of websites, they may be caused by your modem or router.')
+            .images([
+                builder.CardImage.create(session, 'http://img.etimg.com/thumb/msid-19299729,width-640,resizemode-4,imglength-75013/technical-computer-problem-get-help-from-an-expert-over-the-internet.jpg')
+            ]),
+        new builder.HeroCard(session)
+            .title('Lotus Notes')
+            .subtitle('IBM Notes ')
+            .text('A modern business that connects using enterprise email. The IBM Notes enterprise email client integrates messaging, business applications and social collaboration into one easier-to-use workspace')
+            .images([
+                builder.CardImage.create(session, 'http://litmuswww.s3.amazonaws.com/community/learning-center/lotus-notes-icon.png')
+            ]),
+        new builder.HeroCard(session)
+            .title('SAP')
+            .subtitle('German multinational software')
+            .text('Solve the problem?')
+            .images([
+                builder.CardImage.create(session, 'http://itamchannel.com/wp-content/uploads/2015/07/sapman.jpg')
+            ]),
+             new builder.HeroCard(session)
+            .title('Others')
+            .subtitle('Type Your query')
+            .text('Let us know what else do you need help with!')
+            .images([
+                builder.CardImage.create(session, 'http://www.radhanath-swami.net/wp-content/uploads/2010/09/Inconviniences-in-serving-others_s1.jpg')
+            ])
+            ];
+}
 
 bot.dialog('howToChangeLotusNotesPassword', 
 function (session,args,next){

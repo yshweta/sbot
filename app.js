@@ -1997,7 +1997,7 @@ bot.dialog('unableToPrintFromSystem',
 function (session,args,next){
     //session.sendTyping();
       var pfs=session.message.text;
-    session.send("1.	Check whether the printer selected while printing from system is correct or not.\n"+"\n"+"\n 2.	Check whether the printer is powered on or not. If not powered on. Please power on the same. \n"+"\n"+"\n3.	Check whether USB Cable or the LAN Cable is connected properly or not.\n"+"\n"+"\n4.	Make sure the printer is showing Ready status in the Devices and printers in the control panel of the system settings option. \n"+"\n"+"\n5.	Raise the ticket in service desk for engineer addressing and resolving the problem.\n"+"\n"+"\n ");
+    session.send("1.	Check whether the printer selected while printing from system is correct or not.\n"+"\n"+"\n 2.	Dr.Lohith Kapoor. \n"+"\n"+"\n3.	Check whether USB Cable or the LAN Cable is connected properly or not.\n"+"\n"+"\n4.	Make sure the printer is showing Ready status in the Devices and printers in the control panel of the system settings option. \n"+"\n"+"\n5.	Raise the ticket in service desk for engineer addressing and resolving the problem.\n"+"\n"+"\n ");
 session.beginDialog('/pfscard',pfs);
 session.userData.number=pfs;
 },
